@@ -173,14 +173,16 @@ def four(arg1):
 
     # help(str) and help(list), you might also need to use a function that can create a list of numbers for you, try help(range).
 
-#So i have ran some test, it seems to be a problem with set's sorting, sometime it passes, sometime it fails due to elements being in the wrong indicies
 def five(input):
     if type(input) is str:
         input_array = input.split(",")
-        input_set = set()
+        input_set = []
         for i in range(len(input_array)):
             if input_array[i] == "False":
-                input_set.add(input_array[i-2])
+                input_set.append(input_array[i-2])
+        for i in input_set:
+            if input_set.count(i) > 1:
+                input_set.remove(i)
         return list(input_set)
     else:
         return "Please enter a string"
