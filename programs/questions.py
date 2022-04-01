@@ -238,12 +238,15 @@ def six(input):
 
 
 def seven(input):
-    count = 0
-    input = input.lower()
-    for i in input:
-        if i == "a" or i == "e" or i == "u" or i == "o" or i == "i":
-            count = count + 1
-    return count
+    if type(input) is str:
+        count = 0
+        input = input.lower()
+        for i in input:
+            if i == "a" or i == "e" or i == "u" or i == "o" or i == "i":
+                count = count + 1
+        return count
+    else:
+        return "Please enter a string"
 
     # <QUESTION 8>
 
@@ -262,10 +265,13 @@ def seven(input):
 
 
 def eight(input):
-    count = input
-    for i in range(1,input):
-        count = count*i
-    return count
+    if type(input) is int:
+        count = input
+        for i in range(1,input):
+            count = count*i
+        return count
+    else:
+        return "Please enter a integer"
 
     # <QUESTION 9>
 
@@ -287,11 +293,14 @@ def eight(input):
 
 
 def nine(inputString, char):
-    string = inputString.replace(" ", "")
-    try:
-        return string.index(char) + 1
-    except:
-        return -1
+    if type(inputString) and type(char) is str:
+        string = inputString.replace(" ", "")
+        try:
+            return string.index(char) + 1
+        except:
+            return -1
+    else:
+        return "please enter a string"
 
     # <QUESTION 10>
 
@@ -312,12 +321,15 @@ def nine(inputString, char):
 
 
 def ten(string, int, char):
-    string = string.lower()
-    char = char.lower()
-    try:
-        if string.index(char) == int - 1:
-            return True
-        else:
+    if type(string) is str and type(char) is str: # int keeps refering back to the vairable instead of type so i excluded that
+        string = string.lower()
+        char = char.lower()
+        try:
+            if string.index(char) == int - 1:
+                return True
+            else:
+                return False
+        except:
             return False
-    except:
-        return False
+    else:
+        return "Please enter the correct details"
