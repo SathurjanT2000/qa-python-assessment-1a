@@ -35,8 +35,15 @@
 
 
 def one(input1, input2):
-    return ""
-
+    if type(input1) is str and type(input2) is str:
+        if len(input1) > len(input2):
+            return input1
+        elif len(input2) > len(input1):
+            return input2
+        else:
+            return input1 + " " + input2
+    else:
+        return "Please enter strings"
    # <QUESTION 2>
 
     # Return the string that is between the first and last appearance of "bert" in the given string
@@ -61,8 +68,16 @@ def one(input1, input2):
 
 
 def two(input):
-    return ""
-
+    if type(input) is str:
+        input1 = input.upper()
+        try:
+            first = input1.index("BERT")
+            last =  input1.index("BERT", first + 3)
+            return input[first+4:last]
+        except:
+            return ""
+    else:
+        return "Please enter a string"
 
     # <QUESTION 3>
 
@@ -85,7 +100,17 @@ def two(input):
 
 
 def three(arg1):
-    return ""
+    if type(arg1) is int:
+        if arg1%3 == 0 and arg1%5 == 0:
+            return "fizzbuzz"
+        elif arg1%3 == 0:
+            return "fizz"
+        elif arg1%5 == 0:
+            return "buzz"
+        else:
+            return "null"
+    else:
+        return "Please enter an integer"
 
     # <QUESTION 4>
 
@@ -111,8 +136,18 @@ def three(arg1):
 
 
 def four(arg1):
-    return ""
-
+    if type(arg1) is str:
+        arg1_list = arg1.split()
+        highest_value = 0
+        for i in arg1_list:
+            k = 0
+            for j in i:
+                k = k + int(j)
+            if k > highest_value:
+                highest_value = k
+        return highest_value
+    else:
+        return "Please enter a string"
     # <QUESTION 5>
 
     # Given a large string that represents a csv, the structure of each record will be as follows:
@@ -138,9 +173,18 @@ def four(arg1):
 
     # help(str) and help(list), you might also need to use a function that can create a list of numbers for you, try help(range).
 
-
+#So i have ran some test, it seems to be a problem with set's sorting, sometime it passes, sometime it fails due to elements being in the wrong indicies
 def five(input):
-    return ""
+    if type(input) is str:
+        input_array = input.split(",")
+        input_set = set()
+        for i in range(len(input_array)):
+            if input_array[i] == "False":
+                input_set.add(input_array[i-2])
+        return list(input_set)
+    else:
+        return "Please enter a string"
+
 
     # <QUESTION 6>
 
@@ -161,7 +205,22 @@ def five(input):
 
 
 def six(input):
-    return ""
+    if type(input) is str:
+        for i in range(len(input)):
+            if input[i] == 'c':
+                if input[i+1:i+3] == "ei":
+                    return True
+                else:
+                    return False
+            elif input[i] == 'i':
+                if input[i+1] == 'e':
+                    return True
+            elif input[i] == 'e':
+                if input[i+1] == 'i':
+                    return False
+    else:
+        return "Please enter a string"
+
 
     # <QUESTION 7>
 
@@ -179,7 +238,12 @@ def six(input):
 
 
 def seven(input):
-    return ""
+    count = 0
+    input = input.lower()
+    for i in input:
+        if i == "a" or i == "e" or i == "u" or i == "o" or i == "i":
+            count = count + 1
+    return count
 
     # <QUESTION 8>
 
@@ -198,7 +262,10 @@ def seven(input):
 
 
 def eight(input):
-    return ""
+    count = input
+    for i in range(1,input):
+        count = count*i
+    return count
 
     # <QUESTION 9>
 
@@ -220,7 +287,11 @@ def eight(input):
 
 
 def nine(inputString, char):
-    return ""
+    string = inputString.replace(" ", "")
+    try:
+        return string.index(char) + 1
+    except:
+        return -1
 
     # <QUESTION 10>
 
@@ -241,4 +312,12 @@ def nine(inputString, char):
 
 
 def ten(string, int, char):
-    return ""
+    string = string.lower()
+    char = char.lower()
+    try:
+        if string.index(char) == int - 1:
+            return True
+        else:
+            return False
+    except:
+        return False
